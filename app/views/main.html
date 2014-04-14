@@ -9,7 +9,8 @@
       <ul>
         <li ng-repeat="bookmark in bookmarks | filter:{category: category}">
           <a href="{{ bookmark.href }}">
-            <img src="{{ bookmark.imageURL }}" />
+            <img src="http://g.etfv.co/{{ bookmark.href }}" 
+                 data-fallback="http://g.etfv.co/{{ bookmark.href }}"/>
             <span>{{ bookmark.name }}</span>
           </a>
         </li>
