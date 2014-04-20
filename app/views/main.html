@@ -17,7 +17,7 @@
     <li class="separate" ng-repeat="category in categories">
       {{category}}
       <ul>
-        <li ng-repeat="bookmark in bookmarks | filter:{category: category} | filter:{deleted: allowDeleted + 0} | orderBy: clicks">ad: {{ allowDeleted + 0 }} d:{{ bookmark.deleted }} s:{{ showItem(bookmark.deleted, allowDeleted + 0) }}
+        <li ng-repeat="bookmark in bookmarks | filter:{category: category} | showDel:allowDeleted | orderBy: clicks">
           <a href="{{ bookmark.href }}">
             <img src="http://g.etfv.co/{{ bookmark.href }}" 
                  data-fallback="http://g.etfv.co/{{ bookmark.href }}"/>

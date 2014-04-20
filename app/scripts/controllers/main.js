@@ -11,17 +11,20 @@ angular.module('myBookmarksApp')
                 $scope.categories = uniqueCats;
             });
 
-        $scope.showItem = function(deleted, allowDeleted) {
-            console.log(deleted, allowDeleted);
-            if (!deleted) {
-                return true;
-            } else if (deleted && allowDeleted) {
-                return true;
-            } else {
-                return true;
-            }
-            return !!(!deleted || allowDeleted);
-        };
+    })
+    .filter('showDel', function() {
 
+        return function(bm, showDeleted) {
+            var list = [];
+
+            angular.forEach(bm, function(v, k) {
+                if (bm[k].deleted === "0"
+                    || (bm[k].deleted === "1" && showDeleted) ) {
+                    list.push(bm[k]);
+                }
+            });
+
+            return list;
+        };
 
     });

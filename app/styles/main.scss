@@ -103,4 +103,8 @@ body {
     ul {
         list-style-type: none;
     }
+
+    .deleted {
+        text-decoration: line-through;
+    }
 }
