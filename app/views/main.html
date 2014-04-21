@@ -7,8 +7,8 @@
   <h3 class="text-muted">my bookmarks</h3>
 </div>
 
-<div class="controls">
-  <label for="deleted">Toggle Deleted</label>
+<div class="controls pull-right">
+  <label for="deleted">Show Deleted</label>
   <input id="deleted" type="checkbox" ng-model="allowDeleted" />
 </div>
 
@@ -18,7 +18,7 @@
       {{category}}
       <ul>
         <li ng-repeat="bookmark in bookmarks | filter:{category: category} | showDel:allowDeleted | orderBy: clicks">
-          <a href="{{ bookmark.href }}">
+          <a href="{{ bookmark.href }}" ng-class="{deleted: (bookmark.deleted === '1')}">
             <img src="http://g.etfv.co/{{ bookmark.href }}" 
                  data-fallback="http://g.etfv.co/{{ bookmark.href }}"/>
             <span>{{ bookmark.name }}</span>

@@ -106,5 +106,8 @@ body {
 
     .deleted {
         text-decoration: line-through;
+        display: inline-block;
+        background-color: lightgrey;
+        height: 32px;
     }
 }
