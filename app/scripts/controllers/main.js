@@ -3,7 +3,7 @@
 angular.module('myBookmarksApp')
     .controller('MainCtrl', function ($scope, $http) {
 
-        $http.get('data.json')
+        $http.get('../getBookmarks2.php')
             .then(function(res) {
                 var uniqueCats = ['Comics', 'Dev', 'Entertainment', 'Misc', 'Music', 'News', 'Video'];
 
