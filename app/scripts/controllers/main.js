@@ -3,14 +3,21 @@
 angular.module('myBookmarksApp')
     .controller('MainCtrl', function ($scope, $http) {
 
+        var init = function(res) {
+            var uniqueCats = ['Comics', 'Dev', 'Entertainment', 'Misc', 'Music', 'News', 'Video'];
+
+            $scope.bookmarks = res.data;
+            $scope.categories = uniqueCats;
+        };
+
         $http.get('../getBookmarks2.php')
-            .then(function(res) {
-                var uniqueCats = ['Comics', 'Dev', 'Entertainment', 'Misc', 'Music', 'News', 'Video'];
-
-                $scope.bookmarks = res.data;
-                $scope.categories = uniqueCats;
-            });
-
+            .error(function() {
+                console.log('error');
+                $http.get('../data.json')
+                    .then(init);
+            })
+            .success(init);
+        
     })
     .filter('showDel', function() {
 
